@@ -1,13 +1,13 @@
 {% set name = "cp2k-input-tools" %}
-{% set version = "0.8.2" %}
+{% set version = "0.9.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cp2k-input-tools-{{ version }}.tar.gz
-  sha256: 9c256e96008ca6d436a2ab7c75be59fb1607a9c201f4f316abfebdca2645fb9f
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: bf7d229bbcfa41b1caaa32e7eb3c1c689d56bd1cbd4de674bd2fde8de4efb27c
 
 build:
   noarch: python
