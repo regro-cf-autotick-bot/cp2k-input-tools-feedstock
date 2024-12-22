@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cp2k-input-tools-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/cp2k-input-tools-{{ version }}.tar.gz
   sha256: 9c256e96008ca6d436a2ab7c75be59fb1607a9c201f4f316abfebdca2645fb9f
 
 build:
@@ -20,19 +20,19 @@ build:
     - fromcp2k = cp2k_input_tools.cli.fromcp2k:fromcp2k
     - tocp2k = cp2k_input_tools.cli.tocp2k:tocp2k
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
     - poetry >=1
-    - python >=3.7
+    - python {{ python_min }}
   run:
     - click >=7.1.2,<9
     - jinja2 >=2.11.3,<4.0.0
     - pint >=0.15,<0.18
     - pydantic >=1.8.2,<2.0.0
-    - python >=3.7
+    - python >={{ python_min }}
     - transitions >=0.7,<0.8
 
 test:
@@ -48,6 +48,7 @@ test:
     - tocp2k --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/cp2k/cp2k-input-tools
